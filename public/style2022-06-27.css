@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Ubuntu", "Cabin", "IBM Plex Sans", "Trebuchet MS", Helvetica,
+    Arial, sans-serif;
+}
+
+header div.right {
+  text-align: right;
+}
+
+main,
+footer {
+  text-align: center;
+}
+
+main article {
+  padding-top: 2em;
+}
+
+main article img {
+  width: 5em;
+}
+
+footer a[href="mailto:al@greenstem.uk"] {
+  font-family: "Courier New", Courier, monospace, "Times New Roman", Times,
+    serif;
+}
+
+footer img[alt="green vine"] {
+  max-width: 100%;
+}
