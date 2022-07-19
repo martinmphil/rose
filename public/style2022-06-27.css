@@ -10,6 +10,7 @@ html {
 body {
   font-family: "Ubuntu", "Cabin", "IBM Plex Sans", "Trebuchet MS", Helvetica,
     Arial, sans-serif;
+  color: hsl(168, 89%, 7%);
 }
 
 header div.right {
@@ -21,12 +22,21 @@ footer {
   text-align: center;
 }
 
-main article {
+.benefits > article {
   padding-top: 2em;
 }
 
-main article img {
+.benefits > article img {
   width: 5em;
+}
+
+.benefits > article h2:first-of-type {
+  margin-top: 0.4em;
+  margin-bottom: 0.1em;
+}
+
+.benefits > article p:first-of-type {
+  margin-top: 0.1em;
 }
 
 footer a[href="mailto:al@greenstem.uk"] {
@@ -36,4 +46,28 @@ footer a[href="mailto:al@greenstem.uk"] {
 
 footer img[alt="green vine"] {
   max-width: 100%;
+}
+
+@media only screen and (min-width: 16em) {
+  body {
+    margin: auto;
+    padding: 0.5em;
+  }
+  .benefits > article {
+    width: 14em;
+    display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 38em) {
+  .benefits {
+    margin: auto;
+    width: 38em;
+  }
+}
+
+@media only screen and (min-width: 74em) {
+  .benefits {
+    width: 100%;
+  }
 }
