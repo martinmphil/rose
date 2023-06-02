@@ -1,0 +1,75 @@
+:root {
+  box-sizing: border-box;
+  font-family: serif;
+  --sans-serif: system-ui, "Ubuntu", "Cabin", "IBM Plex Sans", "Trebuchet MS",
+    sans-serif;
+  --hue0: #0b0c0c;
+  --hue1: white;
+  --hue3: #003078;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  overflow-wrap: break-word;
+}
+
+.loading {
+  opacity: 50%;
+}
+
+header {
+  text-align: end;
+}
+
+footer {
+  padding-top: 2rem;
+  text-align: end;
+  font-family: var(--sans-serif);
+  font-size: small;
+  opacity: 50%;
+}
+footer a {
+  color: darkgreen;
+}
+
+h1 {
+  font-family: var(--sans-serif);
+}
+
+#crux {
+  padding-top: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+#crux button[data-workflow-id] {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  width: 100%;
+  background-color: var(--hue3);
+  color: var(--hue1);
+  border-color: #505a5f;
+  box-shadow: 0.1rem 0.1rem 0.1rem #b1b4b6;
+  border-radius: 0.4rem;
+}
+#crux button[data-workflow-id]:hover {
+  background-color: white;
+  border-color: #b1b4b6;
+  color: black;
+}
+
+@media only screen and (min-width: 16em) {
+  body {
+    padding: 1rem;
+  }
+}
+@media only screen and (min-width: 38em) {
+  main {
+    margin: auto;
+    width: 38rem;
+  }
+}
