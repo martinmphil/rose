@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="jupyter-notebook.css" />
+    <title>Narrate</title>
+  </head>
+  <body>
+    <header><a href="https://greenstem.uk/">GreenStem.uk</a></header>
+    <p>narrate.ipynb</p>
+    <main>
+      <h1>AI in narrative gaming</h1>
+      <div class="notes">
+        <p>
+          Installation of
+          <a
+            href="https://github.com/marella/ctransformers"
+            target="_blank"
+            rel="nofollow"
+            aria-label="CTransformers Link will open in a new tab"
+            >CTransformers</a
+          >
+          module for python bindings of
+          <a
+            href="https://en.wikipedia.org/wiki/Transformer_%28machine_learning_model%29"
+            target="_blank"
+            rel="nofollow"
+            aria-label="transformer large language models Link will open in a new tab"
+            >transformer large language models</a
+          >, implemented in C/C++ using
+          <a
+            href="https://github.com/ggerganov/ggml"
+            target="_blank"
+            rel="nofollow"
+            aria-label="GGML Link will open in a new tab"
+            >GGML</a
+          >
+          library, with
+          <a
+            href="https://en.wikipedia.org/wiki/CUDA"
+            target="_blank"
+            rel="nofollow"
+            aria-label="CUDA Link will open in a new tab"
+            >CUDA</a
+          >
+          support for parallel compute on
+          <a
+            href="https://en.wikipedia.org/wiki/Graphics_processing_unit"
+            target="_blank"
+            rel="nofollow"
+            aria-label="GPU Link will open in a new tab"
+            >GPU</a
+          >s.
+        </p>
+      </div>
+      <div class="code-cell">
+        <div class="green-tick">✓</div>
+        <div class="code-snippet">
+          <p>
+            <span class="bang">!</span
+            >&nbsp;pip&nbsp;install&nbsp;ctransformers<span
+              class="bracket-highlighting"
+              >[</span
+            >cuda<span class="bracket-highlighting">]</span>
+          </p>
+        </div>
+      </div>
+      <div class="console-output">
+        <p>Collecting ctransformers</p>
+        <p style="padding-left: 1rem">
+          Downloading ctransformers-0.2.23-py3-none-any.whl (9.3 MB)
+        </p>
+        <p style="padding-left: 2rem">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          <span class="ansi-green">9.3/9.3 MB</span>
+          <span class="ansi-red">19.4 MB/s</span>
+        </p>
+        <p>Collecting huggingface-hub (from ctransformers)</p>
+        <p style="padding-left: 1rem">
+          Downloading huggingface_hub-0.16.4-py3-none-any.whl (268 kB)
+        </p>
+        <p style="padding-left: 2rem">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          <span class="ansi-green">268.8/268.8 kB</span>
+          <span class="ansi-red">30.7 MB/s</span>
+        </p>
+        <p>Installing collected packages: huggingface-hub, ctransformers</p>
+        <p>
+          Successfully installed ctransformers-0.2.23 huggingface-hub-0.16.4
+        </p>
+
+        <p>Collecting nvidia-cublas-cu12 (from ctransformers[cuda])</p>
+        <p style="padding-left: 1rem">
+          Downloading nvidia_cublas_cu12-12.2.4.5-py3-none-manylinux1_x86_64.whl
+          (412.5 MB)
+        </p>
+        <p style="padding-left: 2rem">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          <span class="ansi-green">412.5/412.5 MB</span>
+          <span class="ansi-red">2.5 MB/s</span>
+        </p>
+        <p>Collecting nvidia-cuda-runtime-cu12 (from ctransformers[cuda])</p>
+
+        <p style="padding-left: 1rem">
+          Downloading
+          nvidia_cuda_runtime_cu12-12.2.128-py3-none-manylinux1_x86_64.whl (845
+          kB)
+        </p>
+        <p style="padding-left: 2rem">
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          <span class="ansi-green">845.8/845.8 kB</span>
+          <span class="ansi-red">68.1 MB/s</span>
+        </p>
+        <p>
+          Installing collected packages: nvidia-cuda-runtime-cu12,
+          nvidia-cublas-cu12
+        </p>
+        <p>
+          Successfully installed nvidia-cublas-cu12-12.2.4.5
+          nvidia-cuda-runtime-cu12-12.2.128
+        </p>
+      </div>
+      <div class="notes">
+        <p>
+          <a
+            href="https://en.wikipedia.org/wiki/LLaMA#Llama_2"
+            target="_blank"
+            rel="nofollow"
+            aria-label="LLaMA 2 Link will open in a new tab"
+            >LLaMA 2</a
+          >
+          pre-trained large language model initialised via
+          <a
+            href="https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML"
+            target="_blank"
+            rel="nofollow"
+            aria-label="a Hugging Face library Link will open in a new tab"
+            >a Hugging Face library</a
+          >
+          from
+          <a
+            href="https://arxiv.org/abs/2005.14165"
+            target="_blank"
+            rel="nofollow"
+            aria-label="CausalLM Link will open in a new tab"
+            >CausalLM</a
+          >
+          <a
+            href="https://huggingface.co/transformers/v3.5.1/model_doc/auto.html#automodelforcausallm"
+            target="_blank"
+            rel="nofollow"
+            aria-label="class Link will open in a new tab"
+            >class</a
+          >
+          with GPU acceleration.
+        </p>
+      </div>
+      <div class="code-cell">
+        <div class="green-tick">✓</div>
+        <div class="code-snippet">
+          <p>
+            <span class="highlight-pink">from</span> ctransformers
+            <span class="highlight-pink">import</span> AutoModelForCausalLM
+          </p>
+          <p>
+            model_id =
+            <span class="highlight-brown">'TheBloke/Llama-2-7B-Chat-GGML'</span>
+          </p>
+          <p>
+            llm = AutoModelForCausalLM.from_pretrained<span
+              class="bracket-highlighting"
+              >(</span
+            ><br />
+            &nbsp;&nbsp;model_id,<br />
+            &nbsp;&nbsp;model_type=<span class="highlight-brown">'llama'</span
+            >,<br />
+            &nbsp;&nbsp;gpu_layers=<span class="ansi-green">110</span>,<br />
+            <span class="bracket-highlighting">)</span>
+          </p>
+        </div>
+      </div>
+      <div class="console-output">
+        <p>
+          Fetching 1 files: 100% <span class="ansi-green">✓</span> 1/1
+          [00:00&lt;00:00, 1.98it/s]
+        </p>
+        <p>
+          Downloading (…)ca8f5daf/config.json: 100%
+          <span class="ansi-green">✓</span> 29.0/29.0 [00:00&lt;00:00, 1.74kB/s]
+        </p>
+        <p>
+          Fetching 1 files: 100% <span class="ansi-green">✓</span> 1/1
+          [00:20&lt;00:00, 20.95s/it]
+        </p>
+        <p>
+          Downloading (…)chat.ggmlv3.q2_K.bin: 100%
+          <span class="ansi-green">✓</span> 2.87G/2.87G [00:20&lt;00:00,
+          260MB/s]
+        </p>
+      </div>
+      <div class="code-cell">
+        <div class="green-tick">✓</div>
+        <div class="code-snippet">
+          <p>
+            encounter =
+            <span class="highlight-brown"
+              >'''In our fictional story, give three ideas for what happens </span
+            ><br />
+            <span class="highlight-brown"
+              >when pirates capture Space Station Lagrange'''</span
+            ><br />
+          </p>
+          <p>
+            narration = llm<span class="bracket-highlighting">(</span
+            >encounter<span class="bracket-highlighting">)</span><br />
+            <span class="highlight-yellow">print</span
+            ><span class="bracket-highlighting">(</span>narration<span
+              class="bracket-highlighting"
+              >)</span
+            >
+          </p>
+        </div>
+      </div>
+      <div class="console-output">
+        <p style="margin-bottom: 0.8em">
+          1. The pirates demand that the station's scientists perform
+          experiments to prove their theories of a "space-time continuum" are
+          correct.
+        </p>
+        <p style="margin-bottom: 0.8em">
+          2. The pirates hold the station's crew hostage and threaten to kill
+          them if they don't get what they want.
+        </p>
+        <p style="margin-bottom: 0.8em">
+          3. The pirates steal valuable technology from the station and use it
+          to upgrade their own spacecraft, making them a match for any space
+          force that dares challenge them.
+        </p>
+      </div>
+      <div class="notes">
+        <h2>Utopia fallen</h2>
+        <p>
+          The Commonwealth spanned a thousand light years. Yet losing the local
+          jump gate reinvented cash. Now even communications cost money. A young
+          Captain keeps his message short. "Hi Honey. I miss our life before the
+          Navy. I wish I'd stayed freelance and never 'volunteered'. Everyone's
+          so suspicious since The Attack, but reputation still opens doors. The
+          Admiralty promoted me to counterespionage and I found pirates plotting
+          to ransom our new gate. I'm trying to stop them. Happy hunting." The
+          Captain copies his brain state and launches spy drones.
+        </p>
+        <p>
+          Time passes faster for his girlfriend travelling near the speed of
+          light. She'll jump straight home after reaching the next star -
+          assuming nobody blows up the gate again - but he'll still appear
+          decades older. Her ship holds one end of the new wormhole. Everyone
+          knows the vital importance of rebuilding the gates. What kind of enemy
+          appears from nowhere, strikes a devastating blow, and then vanishes?
+          Via the distant wormhole her boyfriend's censored message plays. "Hi
+          Honey … beep … Happy hunting."
+        </p>
+        <h2>Image generation</h2>
+        <p>
+          Stable Diffusion also supports in-game storytelling by generating
+          tailored images on demand.
+        </p>
+        <img
+          src="utopia-fallen-starship-pilot.jpg"
+          alt="Utopia Fallen starship pilot"
+          width="1024"
+          height="940"
+        />
+      </div>
+    </main>
+    <footer><a href="https://greenstem.uk/">GreenStem.uk</a></footer>
+  </body>
+</html>
