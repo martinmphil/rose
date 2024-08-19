@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -22,26 +23,21 @@ footer {
   text-align: center;
 }
 
-.benefits > article {
+.benefits>article {
   padding-top: 2em;
 }
 
-.benefits > article img {
+.benefits>article img {
   width: 5em;
 }
 
-.benefits > article h2:first-of-type {
+.benefits>article h2:first-of-type {
   margin-top: 0.4em;
   margin-bottom: 0.1em;
 }
 
-.benefits > article p:first-of-type {
+.benefits>article p:first-of-type {
   margin-top: 0.1em;
-}
-
-footer a[href="mailto:al@greenstem.uk"] {
-  font-family: "Courier New", Courier, monospace, "Times New Roman", Times,
-    serif;
 }
 
 footer img[alt="green vine"] {
@@ -53,7 +49,8 @@ footer img[alt="green vine"] {
     margin: auto;
     padding: 0.5em;
   }
-  .benefits > article {
+
+  .benefits>article {
     width: 14em;
     display: inline-block;
   }
