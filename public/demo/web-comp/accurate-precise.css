@@ -1,0 +1,44 @@
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #28282B;
+  color: #fcf9e8;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  max-width: 36rem;
+  margin: auto;
+}
+
+strong {
+  font-weight: 700;
+}
+
+main h1:first-of-type {
+  margin: 1rem;
+}
+
+
+accurate-precise {
+  animation: web-comp-fade-in 1000ms;
+}
+
+@keyframes web-comp-fade-in {
+  from {
+    opacity: 0;
+    background-color: inherit;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+noscript {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+}

@@ -1,0 +1,68 @@
+article {
+  background-color: #fcf9e8;
+  color: black;
+  padding: 1rem;
+  min-height: 80vh;
+}
+
+button:hover {
+  background-color: white;
+}
+
+.start-q,
+.choice-button,
+.confirm-answer-button,
+.change-answer-button {
+  display: block;
+  width: 90%;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.4em;
+  border: 2px solid silver;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.current-choice {
+  text-align: center;
+  font-size: 120%;
+  margin-top: 2rem;
+}
+
+.confirm-answer-button {
+  background-color: #CCFFCC;
+  font-weight: 700;
+}
+
+.change-answer-button {
+  width: 80%;
+  background-color: #ffd6dd;
+  margin-top: 3rem;
+}
+
+.outro-link {
+  text-align: right;
+  padding-top: 3rem
+}
+
+
+.fade-in {
+  animation: fade-in 1000ms;
+}
+
+.instant-transparent {
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1000ms;
+  }
+}
