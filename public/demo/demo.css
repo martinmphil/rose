@@ -1,0 +1,15 @@
+body {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+header a[href="http://greenstem.uk/"] {
+  display: block;
+  text-align: right;
+}
+
+sl-details img {
+  width: 100%;
+  object-fit: contain;
+}

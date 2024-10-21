@@ -1,52 +1,200 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./style2022-08-02.css" />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
-  <meta name="theme-color" content="#004d26" />
-  <meta name="description" content="Demonstrating GreenStem.uk" />
-  <title>Demo for GreenStem.uk</title>
-  <body>
-    <header>
-      <div class="right">
-        <a href="https://main.d3dq4xzxmmo3wf.amplifyapp.com/">Candidate-page</a>
-      </div>
-      <div>
-        <a href="../index.html">GreenStem<wbr />.uk home</a>
-      </div>
-    </header>
-    <main>
-      <h1>Demo page</h1>
-      <div class="pith">
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplars</title>
+<link rel="stylesheet" media="(prefers-color-scheme:light)"
+  href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/themes/light.css" />
+<link rel="stylesheet" media="(prefers-color-scheme:dark)"
+  href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/themes/dark.css"
+  onload="document.documentElement.classList.add('sl-theme-dark');" />
+<script type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/shoelace-autoloader.js">
+  </script>
+<style>
+  body {
+    opacity: 0;
+  }
+
+  body.ready {
+    opacity: 1;
+    transition: 0.25s opacity;
+  }
+</style>
+<script type="module">
+  await Promise.allSettled([
+    customElements.whenDefined('sl-details')
+  ]);
+  document.body.classList.add('ready');
+</script>
+<link rel="stylesheet" href="demo.css">
+
+<body>
+  <noscript>Please enable JavaScript before viewing this page.</noscript>
+  <header><a href="http://greenstem.uk/">Greenstem.uk Home</a></header>
+  <main>
+    <h1>Full-stack web development</h1>
+    <p>
+      To illustrate our web design process, please see the following examples and demos.
+    </p>
+
+    <h2>Web Components</h2>
+    <p>
+      See <a href="./web-comp/">"Sensors: accuracy vs precision" demonstration app</a>
+      where the whole application (compressed to ~10kB)
+      automatically unfolds from simple HTML, such as:-
+    </p>
+    <pre><code>&lt;web-comp&gt;
+  &lt;script type="module" src="web-comp.js"&gt;&lt;/script&gt;
+&lt;/web-comp&gt;
+    </code></pre>
+
+    <h2>Situational Judgement Tests</h2>
+    <p>
+      See <a href="./sjt/">Situational Judgement Tests demonstration app</a>
+      used for candidate assessment,
+      where web pages include bespoke accessibility attributes such as:-
+    </p>
+    <code>aria-label="Option A is best"</code>
+
+    <h2>Serverless</h2>
+    <sl-details summary="Infrastructure as code">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/cdk-pseudo-code.png" alt="Cloud Development Kit pseudo-code">
+      <p>
+        CDK pseudo-code
+      </p>
+      <p>
+        See <a href="https://github.com/martinmphil/oak">GitHub.com/MartinMPhil/oak</a>
+        for examples of infrastructure-as-code using
+        Cloud Development Kit (<a href="https://aws.amazon.com/cdk/">CDK</a>) deployed on
+        Amazon Web Services (<a
+          href="https://en.wikipedia.org/wiki/Amazon_Web_Services">AWS</a>).
+      </p>
+    </sl-details>
+
+    <sl-details summary="Auth">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/auth-pseudo-code.png" alt="Authentication pseudo-code">
+      <p>Authentication pseudo-code</p>
+      <p>
+        See
+        <a href="https://github.com/martinmphil/oak/blob/main/lib/auth.ts">Martin M.Phil.</a>
+        GitHub repository for examples of
+        <a href="https://en.wikipedia.org/wiki/OAuth">OAuth</a> login with
+        <a href="https://aws.amazon.com/cognito/">Cognito</a> user pools.
+      </p>
+    </sl-details>
+
+    <sl-details summary="Databases">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/dynamo-db-single-table-design.png" alt="Dynamo-db single table design">
+      <p>
+        See
+        <a href="https://github.com/martinmphil/oak/blob/main/lib/database.ts">
+          Martin M.Phil.
+        </a>
+        GitHub repository for this single-table database design which provides
+        fast, reliable, scalable and inexpensive queries on the secure and fully-managed
+        <a href="https://en.wikipedia.org/wiki/Amazon_DynamoDB">DynamoDB</a>.
+      </p>
+    </sl-details>
+
+    <sl-details summary="Lambda functions">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/lambda-typescript.png" alt="lambda server function in typescript">
+      <p>
+        See
+        <a
+          href="https://github.com/martinmphil/oak/blob/main/lib/handlers/workbook/scoreSubmission.ts">
+          Martin M.Phil.
+        </a>
+        GitHub repository for an example of TypeScript server functions running in Node.
+      </p>
+    </sl-details>
+
+    <h2>Test driven development</h2>
+    <sl-details summary="Unit tests">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <p>
+        Specifying unit tests before writing code increases code quality and quickens software
+        development.
+      </p>
+      <img src="./img/unit-test-example.png" alt="unit-test example code">
+    </sl-details>
+
+    <sl-details summary="Integration tests">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <p>
+        Integration tests ensure modules and components function well together.
+      </p>
+      <img src="./img/integration-test-example.png" alt="integration-test example code">
+    </sl-details>
+
+    <sl-details summary="End-to-end tests">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <p>
+        End-to-end tests allow simulate real-user interactions.
+      </p>
+      <img src="./img/e2e-test-example.png" alt="End-to-end-test example code">
+    </sl-details>
+
+    <h2>Web design</h2>
+    <sl-details summary="State charts">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/ui-state-chart.svg" alt="user interface state chart">
+    </sl-details>
+
+    <sl-details summary="User stories">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <p>
+        As a user I want to easily create my suggestions, via desktop or mobile, to begin the
+        voting process. Acceptance criteria:-</p>
+      <ul>
+        <li>Expandable input text fields</li>
+        <li>Unique identifiers for each proposal</li>
+        <li>Easily rearrange proposal order</li>
+        <li>Allow editing before distribution</li>
+        <li>Responsive mobile-first web design</li>
+      </ul>
+    </sl-details>
+
+    <h2>Hobby websites</h2>
+    <ul>
+      <li>
         <p>
-          For examples of how our assessments can record your answers and grade
-          your achievements, please sign up and log in to our
-          <a href="https://main.d3dq4xzxmmo3wf.amplifyapp.com/"
-            >candidates page</a
-          >.
+          <a href="https://martinmphil.netlify.app/">Functional Programming teaser</a>
         </p>
-        <p>Other demonstrations include:-</p>
-        <ul>
-          <li>
-            <p><a href="./sjt/index.html">Situational judgement tests</a></p>
-          </li>
-          <li>
-            <p>
-              <a href="http://www.dancewith.co.uk/js/#/sensor"
-                >Sensors: accuracy vs precision</a
-              >
-            </p>
-          </li>
-          <li>
-            <p>
-              <a href="https://martinmphil.netlify.app/"
-                >Functional programming teaser</a
-              >
-            </p>
-          </li>
-        </ul>
-      </div>
-    </main>
-  </body>
+      </li>
+      <li>
+        <p>
+          <a href="./machine-learning/">Artificial neural networks for generative AI</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="http://dancewith.co.uk/rpg/simul9p.html">
+            Mathematical modelling for polyhedral probabilities</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="http://dancewith.co.uk/">DanceWith.co.uk</a>
+        </p>
+      </li>
+    </ul>
+
+  </main>
+
+</body>
+
 </html>
