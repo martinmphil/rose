@@ -4,7 +4,13 @@ body {
   padding: 0.5rem;
 }
 
-header a[href="http://greenstem.uk/"] {
+header a[href="/"] {
+  display: block;
+  text-align: right;
+}
+
+footer a[href="/"] {
+  padding-top: 1rem;
   display: block;
   text-align: right;
 }

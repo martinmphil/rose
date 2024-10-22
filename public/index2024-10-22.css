@@ -1,20 +1,10 @@
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 body {
-  font-family: "Ubuntu", "Cabin", "IBM Plex Sans", "Trebuchet MS", Helvetica,
+  font-family: "Ubuntu", "IBM Plex Sans", "Cabin", "Trebuchet MS", Helvetica,
     Arial, sans-serif;
   color: hsl(168, 89%, 7%);
 }
 
-header div.right {
+header {
   text-align: right;
 }
 
@@ -64,6 +54,10 @@ footer img[alt="green vine"] {
 }
 
 @media only screen and (min-width: 74em) {
+  body {
+    max-width: 74em;
+  }
+
   .benefits {
     width: 100%;
   }
