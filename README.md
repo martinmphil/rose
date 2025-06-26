@@ -6,13 +6,13 @@ GreenStem.uk website
 
 ## Related repositories
 
-- [oak](https://github.com/martinmphil/oak) Cloud Development Kit (CDK) databank stack.
+- [oak](https://github.com/martinmphil/oak) Cloud Development Kit (CDK) databank stack 
 
-- [moss](https://github.com/martinmphil/moss) browser script for candidate assessment app.
+- [moss](https://github.com/martinmphil/moss) browser script for candidate assessment app 
 
-- [fern](https://github.com/martinmphil/fern) AWS Amplify host for candidate assessment app.
+- [fern](https://github.com/martinmphil/fern) AWS Amplify host for candidate assessment app 
 
-- [ron-reade](https://github.com/martinmphil/ron_reade) AWS Amplify host for candidate assessment app.
+- [ron-reade](https://github.com/martinmphil/ron_reade) AI text-to-speech running locally in browser 
 
 ## Serving locally
 
