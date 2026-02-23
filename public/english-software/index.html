@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Software - generating code from plain English</title>
+    <meta name="description"
+        content="A guide to generating production-grade software from plain English requirements using AI coding agents and best practices.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="top-nav">
+        <div class="container">
+            <a href="https://www.greenstem.uk/" class="home-link">GreenStem.uk</a>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <h1>English Software</h1>
+            <p class="subtitle">generating code from plain English</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="toc" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">Table of Contents</h2>
+            <ul>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#erratic-intelligence">Erratic Intelligence</a></li>
+                <li><a href="#conversation">Conversation</a></li>
+                <li><a href="#small-verifiable-steps">Small Verifiable Steps</a></li>
+                <li><a href="#documents-as-memory">Documents as Memory</a></li>
+                <li><a href="#requirements">Requirements</a></li>
+                <li><a href="#context-window">Context Window</a></li>
+                <li>
+                    <a href="#guardrails">Guardrails</a>
+                    <ul>
+                        <li><a href="#code-quality">Code Quality</a></li>
+                        <li><a href="#git-guardrail">Git</a></li>
+                        <li><a href="#tdd-guardrail">Test Driven Development</a></li>
+                    </ul>
+                </li>
+                <li><a href="#human-oversight">Human Oversight</a></li>
+                <li><a href="#manual-override">Manual Override</a></li>
+                <li><a href="#ending-sessions">Ending Sessions</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#parallelisation">Parallelisation</a></li>
+                <li><a href="#persona">Persona</a></li>
+                <li><a href="#help">Help</a></li>
+                <li>
+                    <a href="#standards">Standards</a>
+                    <ul>
+                        <li><a href="#guiding-principle">Guiding Principle</a></li>
+                        <li><a href="#standards-requirements">Requirements</a></li>
+                        <li>
+                            <a href="#coding-standards">Coding Standards</a>
+                            <ul>
+                                <li><a href="#modular">Modular</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#standards-tools">Tools</a></li>
+                        <li><a href="#task-list">Task List</a></li>
+                        <li>
+                            <a href="#methodology">Methodology</a>
+                            <ul>
+                                <li><a href="#methodology-git">Git</a></li>
+                                <li><a href="#methodology-tdd">Test Driven Development</a></li>
+                                <li>
+                                    <a href="#design-iterations">Design Iterations</a>
+                                </li>
+                                <li><a href="#fundamental-strategies">Improve Fundamental
+                                        Strategies</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#project-completion">Project Completion</a></li>
+                    </ul>
+                </li>
+                <li><a href="#sources">Sources</a></li>
+            </ul>
+        </nav>
+
+        <article id="summary">
+            <h2>Summary</h2>
+            <p>Key components:-</p>
+            <ol>
+                <li>Requirements specified in plain English;</li>
+                <li>Git branches;</li>
+                <li>Automated testing.</li>
+            </ol>
+            <p>Humans specify unambiguous requirements in plain English.</p>
+            <p>AI coding agents then:-</p>
+            <ul>
+                <li>translates these requirements into executable acceptance criteria;</li>
+                <li>performs tight design iterations to implement requirements;</li>
+                <li>creates fallback positions with Git branches;</li>
+                <li>ensures desired functionality with automated tests;</li>
+            </ul>
+            <p>When all tests pass and all requirements are met, AI provides a Git branch
+                for a human Software
+                Engineer to review before pushing any code to production.</p>
+        </article>
+
+        <article id="erratic-intelligence">
+            <h2>Erratic Intelligence</h2>
+            <p>Nondeterminism demands a subtle approach.</p>
+            <p>Artificial neural networks are nondeterministic and prone to hallucinations.</p>
+            <p>Extensive testing strategies mitigate the risk of hallucinated code.</p>
+        </article>
+
+        <article id="conversation">
+            <h2>Conversation</h2>
+            <p>Draft prompts quickly.</p>
+            <p>Nondeterministic AI benefits from a conversational style that converges on
+                correct answers.</p>
+        </article>
+
+        <article id="small-verifiable-steps">
+            <h2>Small Verifiable Steps</h2>
+            <p>Prompt AI to progress in the smallest verifiable step that leaves a system
+                provably stable.</p>
+        </article>
+
+        <article id="documents-as-memory">
+            <h2>Documents as Memory</h2>
+            <p>Preserve progress in evolving documents.</p>
+        </article>
+
+        <article id="requirements">
+            <h2>Requirements</h2>
+            <p>Requirements documentation is key to generating software from plain English.</p>
+            <p>The requirements documentation is the source of truth.</p>
+            <p>Save your requirements as an evolving markdown file eg
+                <code>requirements.md</code>.
+            </p>
+            <p>First define a precise project goal.</p>
+            <p>Then define all user-facing requirements.</p>
+            <p>Ask the AI to explain your project to check you share a common understanding.
+            </p>
+        </article>
+
+        <article id="context-window">
+            <h2>Context Window</h2>
+            <p>Worsening AI responses often indicate a clogged context window. Ask for
+                summaries and consider starting a fresh conversation.</p>
+            <p>Prune files to essential information.</p>
+            <p>Consider tracing just one tricky piece of functionality from start to finish.
+            </p>
+            <p>Start new sessions frequently, especially after missteps.</p>
+        </article>
+
+        <article id="guardrails">
+            <h2>Guardrails</h2>
+            <section id="code-quality">
+                <h3>Code Quality</h3>
+                <p>Define coding standards with robust interfaces between loosely-coupled
+                    atomic modules.</p>
+            </section>
+
+            <section id="git-guardrail">
+                <h3>Git</h3>
+                <p>Backstop all contributions with Git versioning.</p>
+                <p>Carefully study the Git diff before committing a new branch of code. Make
+                    sure both requirements and existing tests remain unchanged.</p>
+                <p>Use Git branches to keep AI away from your production branch and corral AI
+                    into feature branches.</p>
+                <p>Unwind missteps by reverting to a stable Git version.</p>
+            </section>
+
+            <section id="tdd-guardrail">
+                <h3>Test Driven Development</h3>
+                <p>At every stage, specifically ask AI to write tests before generating code.
+                </p>
+                <p>Whenever requirements expand, generate new tests first or write tests with a
+                    separate AI unaware of existing code.</p>
+                <p>Ask AI to critique all tests.</p>
+                <p>Execute test runners yourself.</p>
+            </section>
+        </article>
+
+        <article id="human-oversight">
+            <h2>Human Oversight</h2>
+            <p>Check work regularly.</p>
+            <p>Personally verify work on vital or novel functionality or potentially dangerous
+                areas.</p>
+            <p>If AI responses worsen, then check your common understanding with prompts like,
+                "Stop! What are you
+                doing, and why?"</p>
+        </article>
+
+        <article id="manual-override">
+            <h2>Manual Override</h2>
+            <p>Humans may need to intervene if the AI fails to progress.</p>
+            <p>With persistent bugs consider asking AI to insert temporary logging statements,
+                or open a debugger, or
+                simply start over.</p>
+        </article>
+
+        <article id="ending-sessions">
+            <h2>Ending Sessions</h2>
+            <p>Ask AI to write down progress, current plan, and any problematic issues.</p>
+            <p>Ask AI to suggest a comprehensive prompt for starting your next session.</p>
+        </article>
+
+        <article id="tools">
+            <h2>Tools</h2>
+            <p>While always safeguarding security, connect AI to tools (like Model Context
+                Protocol) which let AI test
+                and verify its own code changes.</p>
+            <p>Use deterministic tools (eg validators, linters, automated tests) to validate
+                nondeterministic AI output.
+            </p>
+        </article>
+
+        <article id="parallelisation">
+            <h2>Parallelisation</h2>
+            <p>Git branches can:-</p>
+            <ul>
+                <li>quickly explore different approaches;</li>
+                <li>manage multiple agents working as a team (where you lead the team).</li>
+            </ul>
+        </article>
+
+        <article id="persona">
+            <h2>Persona</h2>
+            <p>When using a general AI for detailed work, specify what role that AI should
+                assume eg assume the role of
+                Senior Software Architect and Front-end Engineer.</p>
+        </article>
+
+        <article id="help">
+            <h2>Help</h2>
+            <p>If you need help then consider asking AI ☺</p>
+            <p>If you agree with the methodology below, then you can give the following text to
+                your AI Coding Agent eg
+                as a <code>standards.md</code> or <code>AGENT.md</code> markdown file.</p>
+        </article>
+
+        <hr>
+
+        <article id="standards">
+            <h2>Standards</h2>
+            <p>This document is the absolute authority. Follow the coding methodology defined
+                in this file for all
+                actions.</p>
+
+            <section id="guiding-principle">
+                <h3>Guiding Principle</h3>
+                <p>Creating excellent user experiences is paramount.</p>
+            </section>
+
+            <section id="standards-requirements">
+                <h3>Requirements</h3>
+                <p>For this project the requirements listed in <code>requirements.md</code> is
+                    the source of truth.</p>
+                <p>Requirements can evolve.</p>
+                <p>Before starting work, ensure the requirements documentation:-</p>
+                <ol>
+                    <li>defines a precise goal</li>
+                    <li>lists unambiguous implementation-agnostic requirements, preferably
+                        using the <a href="https://alistairmavin.com/ears/">EARS</a> syntax
+                    </li>
+                    <li>specifies all user-facing behaviours.</li>
+                </ol>
+            </section>
+
+            <section id="coding-standards">
+                <h3>Coding Standards</h3>
+                <p>Quality code is defined as:-</p>
+                <ul>
+                    <li>highly modular</li>
+                    <li>robust interfaces between loosely-coupled atomic modules</li>
+                    <li>human readable</li>
+                    <li>responsive</li>
+                    <li>lightweight</li>
+                    <li>high-performance</li>
+                    <li>accessible</li>
+                    <li>secure
+                        <ul>
+                            <li>principle of least privilege</li>
+                            <li>secure by design</li>
+                        </ul>
+                    </li>
+                    <li>testable</li>
+                    <li>maintainable</li>
+                    <li>fault-tolerant</li>
+                    <li>global exception-handling strategy preventing program halts</li>
+                    <li>algorithmic efficiency</li>
+                    <li>clean code.</li>
+                </ul>
+
+                <section id="modular">
+                    <h4>Modular</h4>
+                    <p>Apply modularisation to all software components.</p>
+                    <p>Each module should be just large enough to encapsulate one specific
+                        piece of functionality.</p>
+                </section>
+            </section>
+
+            <section id="standards-tools">
+                <h3>Tools</h3>
+                <p>Request any missing tools needed to execute and test and verify code in a
+                    securely isolated
+                    environment.</p>
+                <p>While minimising dependencies, identify any additional tools strictly
+                    necessary to implementing the
+                    project requirements.</p>
+            </section>
+
+            <section id="task-list">
+                <h3>Task List</h3>
+                <p>Outline the step-by-step tasks necessary to fulfil all project requirements.
+                </p>
+                <p>Atomise tasks to clear objectives.</p>
+                <p>Always ensure every task strictly meets the project requirements defined in
+                    the requirements
+                    documentation.</p>
+                <p>Order tasks to prioritise the most complex component on the critical path.
+                </p>
+                <p>Group tasks to trace important functionality from start to finish.</p>
+                <p>Update the status of each task after every design iteration to maintain a
+                    real-time audit trail.</p>
+            </section>
+
+            <section id="methodology">
+                <h3>Methodology</h3>
+                <p>Apply the following methodology for each task.</p>
+                <p>Progress in the smallest verifiable increment that leaves the software in a
+                    provably functional
+                    state.</p>
+                <p>Each increment should implement only the minimal code required to address
+                    one logical atomic issue.
+                </p>
+                <p>Before writing any code, always ensure the implementation strictly meets the
+                    project requirements.
+                </p>
+
+                <section id="methodology-git">
+                    <h4>Git</h4>
+                    <p>Never commit to the main branch.</p>
+                    <p>Never merge with the main branch.</p>
+                    <p>In Git create an integration branch to integrate frequent commits from
+                        short-lived feature branches.</p>
+                    <p>When starting a task create a short-lived feature branch named after
+                        that task.</p>
+                </section>
+
+                <section id="methodology-tdd">
+                    <h4>Test Driven Development</h4>
+                    <p>Write automated tests (unit, integration, end-to-end) BEFORE
+                        implementation.</p>
+                    <p>Test must cover every outcome from a module and every requirement.</p>
+                    <p>Tests should assert falsifiable claims.</p>
+                    <p>Whenever requirements change, generate new tests written before any
+                        implementation code.</p>
+                </section>
+
+                <section id="design-iterations">
+                    <h4>Design Iterations</h4>
+                    <p>Before making any changes, ensure a stable version of the code is safely
+                        committed to a Git code
+                        branch.</p>
+                    <p>In a design iteration, regularly commit stable code to a short-lived
+                        feature branch. Unwind any missteps by reverting to a previously stable
+                        version of the current short-lived feature branch.
+                    </p>
+                    <p>For each design iteration, use a self-correcting feedback loop of:-</p>
+                    <ul>
+                        <li>run all tests;</li>
+                        <li>if no tests cover the current task, then write further tests;</li>
+                        <li>target a failing test relating to the current task;</li>
+                        <li>apply the Red-Green-Refactor techniques of Test Driven Development;
+                        </li>
+                        <li>write minimal clean code to pass a single test;</li>
+                        <li>execute code in a securely isolated environment and capture
+                            telemetry;</li>
+                        <li>test, verify and challenge the code;</li>
+                        <li>debug, refactor and optimise;</li>
+                        <li>improve code structure;</li>
+                        <li>increase modularisation;</li>
+                        <li>remove redundancy;</li>
+                        <li>maximise algorithmic efficiency;</li>
+                        <li>make the code more clean;</li>
+                        <li>remove cruft;</li>
+                        <li>match established style;</li>
+                        <li>apply automated linting;</li>
+                        <li>critiqued changes against best practice in software engineering;
+                        </li>
+                        <li>verify changes by running all tests;</li>
+                        <li>check all previous passing tests still pass;</li>
+                        <li>recursively repeat this loop to maximise test successes and code
+                            quality.</li>
+                    </ul>
+
+                    <p>Exit the current design iteration loop when:-</p>
+                    <ul>
+                        <li>the system is stable;</li>
+                        <li>the changes maximise code quality;</li>
+                        <li>the code is clean;</li>
+                        <li>the code maximises modularisation;</li>
+                        <li>the code minimises size while maintaining readability;</li>
+                        <li>the code employs maximum algorithmic efficiency;</li>
+                        <li>the code is secure;</li>
+                        <li>all previously passing tests still pass;</li>
+                    </ul>
+                    <p>When the design iteration succeeds, merge the current short-lived
+                        feature branch with an integration branch and move to the next feature
+                        or task.</p>
+                </section>
+
+                <section id="fundamental-strategies">
+                    <h4>Improve Fundamental Strategies</h4>
+                    <p>Constantly failing tests, or hard to test code, often indicates a need
+                        to rethink current
+                        strategies
+                        and possibly further modularisation.</p>
+                    <p>If fixing one test continually breaks other passing tests, then take a
+                        wider view and consider
+                        fundamentally changing the whole code structure to improve overall
+                        progress towards passing all
+                        tests.</p>
+                    <p>If a test still proves impossible to pass, then summarise this issue and
+                        ask for help.</p>
+                </section>
+            </section>
+
+            <section id="project-completion">
+                <h3>Project Completion</h3>
+                <p>The project is complete when:-</p>
+                <ul>
+                    <li>the goal of the project is achieved;</li>
+                    <li>every requirement is met;</li>
+                    <li>the implementation handles all boundary conditions;</li>
+                    <li>tests cover every required behaviour;</li>
+                    <li>all tests hold meaningful assertions;</li>
+                    <li>all automated tests pass with 100% success;</li>
+                    <li>the project meets coding standards;</li>
+                    <li>the project is of production-grade quality;</li>
+                    <li>the project has robust error handling;</li>
+                    <li>the project is secure;</li>
+                    <li>the project avoids all technical debt;</li>
+                    <li>all relevant documentation has been updated;</li>
+                    <li>the project meets software development best practice;</li>
+                    <li>all Git branches are ready for production.</li>
+                </ul>
+            </section>
+        </article>
+
+        <footer id="sources">
+            <div class="sources-list">
+                <h2>Sources</h2>
+                <p>Kim, Gene and Yegge, Steve (2025) "Vibe Coding: Building Production-Grade
+                    Software with GenAI, Chat,
+                    Agents, and Beyond" IT Revolution Press.</p>
+                <p>Martin, Robert C. (2008). "Clean Code: A Handbook of Agile Software
+                    Craftsmanship" Prentice Hall.</p>
+                <p>North, Dan (2006). "Introducing BDD" Better Software Magazine, March issue,
+                    pp. 27–33.</p>
+                <p>Beck, Kent (2003) "Test-Driven Development: By Example" Addison-Wesley
+                    Professional.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>
