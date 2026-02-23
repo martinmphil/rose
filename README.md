@@ -1,6 +1,6 @@
 # Rose
 
-GreenStem.uk website
+GreenStem.uk website 🌿
 
 [![rose project logo](https://user-images.githubusercontent.com/37618836/157210711-e9e64cd2-ee87-44f6-9814-5030d24ac882.png)](https://www.greenstem.uk/)
 
