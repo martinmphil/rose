@@ -166,6 +166,265 @@
     <sl-details summary="State charts">
       <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
       <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <img src="./img/state-chart-diagram.png" alt="user interface state chart">
+    </sl-details>
+
+    <sl-details summary="State machine">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+      <div style="padding: 15px; border: 1px solid; border-top: none; overflow-x: auto;">
+
+        <h3>Event Dictionary</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+          <thead>
+            <tr style="text-align: left;">
+              <th style="padding: 8px; border: 1px solid;">Event (Trigger)</th>
+              <th style="padding: 8px; border: 1px solid;">Source</th>
+              <th style="padding: 8px; border: 1px solid;">Physical Action / Logic Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">APP_OPENS</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">The browser finishes loading the
+                initial
+                HTML, CSS, and JS bundle.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">MODEL_LOADED</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">The artificial-neural-network model
+                and
+                all associated necessary resources are successfully cached in the browser's
+                memory.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">RETRY_TIMER_TICK</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">Delay factor fired by model loading
+                retry strategy.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">MODEL_ACQUISITION_FAILED</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">Retry strategy for model loading has
+                failed to load the text-to-speech model and all associated necessary resources.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">TEXT_UPDATED</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">HTML input event on the text-area
+                fires
+                on every keystroke, paste, or deletion and triggers validation guards.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">PROCESS_TEXT</td>
+              <td style="padding: 8px; border: 1px solid;">User</td>
+              <td style="padding: 8px; border: 1px solid;">Pressing the 'Create Speech' button.
+                (Note: Logic is ignored unless the state is Text_Valid and Model_Primed).</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">CLEAR_TEXT</td>
+              <td style="padding: 8px; border: 1px solid;">User</td>
+              <td style="padding: 8px; border: 1px solid;">Pressing the 'Clear Text' button.
+                This
+                resets both the text-area content and the Text_Validation state region.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">HALT_PROCESSING</td>
+              <td style="padding: 8px; border: 1px solid;">User</td>
+              <td style="padding: 8px; border: 1px solid;">Pressing the 'Halt Processing'
+                button
+                during an active text-to-speech conversion job.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">CONVERSION_SUCCESS</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">The text-to-speech conversion
+                successfully completes for the final audio chunk for the current Text Manifest.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">CONVERSION_FAILED</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">The text-to-speech conversion engine
+                throws an exception or error during processing.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">UNCAUGHT_EXCEPTION</td>
+              <td style="padding: 8px; border: 1px solid;">System</td>
+              <td style="padding: 8px; border: 1px solid;">A global error listener catches a
+                critical system crash (e.g., window.onerror).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>State Dictionary</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+          <thead>
+            <tr style="text-align: left;">
+              <th style="padding: 8px; border: 1px solid;">Parent State</th>
+              <th style="padding: 8px; border: 1px solid;">State Name</th>
+              <th style="padding: 8px; border: 1px solid;">Entry Actions (App Behaviour)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Model_Manager</td>
+              <td style="padding: 8px; border: 1px solid;">Model_Acquisition</td>
+              <td style="padding: 8px; border: 1px solid;">Start model acquisition download;
+                Show
+                status: Downloading artificial neural network.; Disable: Create Speech button;
+                Disable: Halt Processing button; Audio player semitransparent.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Model_Manager</td>
+              <td style="padding: 8px; border: 1px solid;">Model_Acquisition_Retry</td>
+              <td style="padding: 8px; border: 1px solid;">Show status: Model loading failed -
+                retry {retry_count}.; Disable: Create Speech button; Disable: Halt Processing
+                button; Audio player semitransparent.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Model_Manager</td>
+              <td style="padding: 8px; border: 1px solid;">Model_Unavailable (Final)</td>
+              <td style="padding: 8px; border: 1px solid;">Terminal state. Show status: Sadly
+                we
+                encountered a problem. Please reload this page or try again later.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Model_Manager</td>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed</td>
+              <td style="padding: 8px; border: 1px solid;">Model successfully downloaded. Defer
+                to
+                orthogonal regions (Input, Output) nested in this Model_Primed parent state.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Text_Validation</td>
+              <td style="padding: 8px; border: 1px solid;">Text_Empty</td>
+              <td style="padding: 8px; border: 1px solid;">Clear text-area; Disable: Clear Text
+                button; Disable: Create Speech button.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Text_Validation</td>
+              <td style="padding: 8px; border: 1px solid;">Text_Valid</td>
+              <td style="padding: 8px; border: 1px solid;">Enable: Clear Text button; Clear all
+                text warnings. (Note: Create Speech button enables only if Model_Manager is in
+                Model_Primed state).</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Text_Validation</td>
+              <td style="padding: 8px; border: 1px solid;">Excessive_Word_Length</td>
+              <td style="padding: 8px; border: 1px solid;">Enable: Clear Text button; Disable:
+                Create Speech button; Show status: Your text contains overly long words.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root.Text_Validation</td>
+              <td style="padding: 8px; border: 1px solid;">Excessive_Text_Length</td>
+              <td style="padding: 8px; border: 1px solid;">Enable: Clear Text button; Disable:
+                Create Speech button; Show status: Text too long. Limit to 10,000 characters.
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Awaiting_Conversion</td>
+              <td style="padding: 8px; border: 1px solid;">Show status: Please enter text to be
+                read aloud.; Disable: Halt Processing button.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Converting</td>
+              <td style="padding: 8px; border: 1px solid;">Snapshot text-area content;
+                Hierarchical
+                Text Chunking; Show status: Processing text chunk {x} of {y}.; Disable: Create
+                Speech button; Enable: Halt Processing button.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Conversion_Error</td>
+              <td style="padding: 8px; border: 1px solid;">Show status: Sadly we encountered a
+                problem. Please try again.; Disable: Halt Processing button.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Output</td>
+              <td style="padding: 8px; border: 1px solid;">Speech_Ready</td>
+              <td style="padding: 8px; border: 1px solid;">Assign new audio data to audio
+                player;
+                Audio player opaque; Show status: Ready.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Output</td>
+              <td style="padding: 8px; border: 1px solid;">Audio_Empty</td>
+              <td style="padding: 8px; border: 1px solid;">Terminate playback; Reset seek-bar;
+                Flush data; Audio player semitransparent.</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root</td>
+              <td style="padding: 8px; border: 1px solid;">Unhandled_Error (Final)</td>
+              <td style="padding: 8px; border: 1px solid;">Terminal state. Show error status;
+                Disable all interaction buttons; Audio Player semitransparent.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Transition Map</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="text-align: left;">
+              <th style="padding: 8px; border: 1px solid;">Parent State</th>
+              <th style="padding: 8px; border: 1px solid;">Current State</th>
+              <th style="padding: 8px; border: 1px solid;">Event (Trigger)</th>
+              <th style="padding: 8px; border: 1px solid;">Guard (Condition)</th>
+              <th style="padding: 8px; border: 1px solid;">Next State</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root</td>
+              <td style="padding: 8px; border: 1px solid;">(initial)</td>
+              <td style="padding: 8px; border: 1px solid;">APP_OPENS</td>
+              <td style="padding: 8px; border: 1px solid;">-</td>
+              <td style="padding: 8px; border: 1px solid;">Model_Acquisition</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Awaiting_Conversion</td>
+              <td style="padding: 8px; border: 1px solid;">PROCESS_TEXT</td>
+              <td style="padding: 8px; border: 1px solid;">[text exists AND valid length]</td>
+              <td style="padding: 8px; border: 1px solid;">Converting</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Converting</td>
+              <td style="padding: 8px; border: 1px solid;">CONVERSION_SUCCESS</td>
+              <td style="padding: 8px; border: 1px solid;">-</td>
+              <td style="padding: 8px; border: 1px solid;">Awaiting_Conversion</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Model_Primed.Input</td>
+              <td style="padding: 8px; border: 1px solid;">Converting</td>
+              <td style="padding: 8px; border: 1px solid;">HALT_PROCESSING</td>
+              <td style="padding: 8px; border: 1px solid;">-</td>
+              <td style="padding: 8px; border: 1px solid;">Awaiting_Conversion</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid;">Root</td>
+              <td style="padding: 8px; border: 1px solid;">(any)</td>
+              <td style="padding: 8px; border: 1px solid;">UNCAUGHT_EXCEPTION</td>
+              <td style="padding: 8px; border: 1px solid;">-</td>
+              <td style="padding: 8px; border: 1px solid;">Unhandled_Error (Final)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </sl-details>
+
+    <sl-details summary="User flow">
+      <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+      <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
       <img src="./img/ui-state-chart.svg" alt="user interface state chart">
     </sl-details>
 
