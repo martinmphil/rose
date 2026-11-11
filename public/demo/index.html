@@ -8,9 +8,8 @@
 <link rel="stylesheet" media="(prefers-color-scheme:dark)"
   href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/themes/dark.css"
   onload="document.documentElement.classList.add('sl-theme-dark');" />
-<script type="module"
-  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/shoelace-autoloader.js">
-  </script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.17.1/cdn/shoelace-autoloader.js">
+</script>
 <style>
   body {
     opacity: 0;
@@ -39,25 +38,28 @@
     </p>
 
     <h2>Machine Learning</h2>
+    <p>Private, local, open source, realistic, text-to-speech (TTS) comes from following our <a href="./kokoro/">kokoro
+        docker guidelines</a>.
+    </p>
+    <p>
+      The <a href="./ron-reade/">Ron Reade</a> app uses Transformers.js to run compact AI
+      models inside a web browser, see
+      <a href="https://github.com/martinmphil/ron_reade" target="_blank" rel="noopener noreferrer">GitHub
+        repository</a>.
+      Hence this text-to-speech app maintains complete user privacy while reading aloud text
+      with natural cadence and realistic speech.
+    </p>
     <p>
       AI Coding Agents can create valid, verifiable, loosely-coupled modules with
       well-documented interfaces by following our <a href="/english-software/">AI coding
         guardrails</a>.
     </p>
-    <p>
-      The <a href="./ron-reade/">Ron Reade</a> app uses Transformers.js to run compact AI
-      models inside a web browser, see
-      <a href="https://github.com/martinmphil/ron_reade" target="_blank"
-        rel="noopener noreferrer">GitHub repository</a>.
-      Hence this text-to-speech app maintains complete user privacy while reading aloud text
-      with natural cadence and realistic speech.
-    </p>
 
     <h2>Web Components</h2>
     <p>
       <a href="./web-comp/">"Sensors: accuracy vs precision" app</a> packs a whole <a
-        href="https://github.com/martinmphil/training_via_js" target="_blank"
-        rel="noopener noreferrer">application</a> (compressed to ~10kB) into a simple,
+        href="https://github.com/martinmphil/training_via_js" target="_blank" rel="noopener noreferrer">application</a>
+      (compressed to ~10kB) into a simple,
       standards compliant, HTML web components, such as:-
     </p>
     <pre><code>&lt;web-comp&gt;
@@ -85,8 +87,7 @@
         See <a href="https://github.com/martinmphil/oak">GitHub.com/MartinMPhil/oak</a>
         for examples of infrastructure-as-code using
         Cloud Development Kit (<a href="https://aws.amazon.com/cdk/">CDK</a>) deployed on
-        Amazon Web Services (<a
-          href="https://en.wikipedia.org/wiki/Amazon_Web_Services">AWS</a>).
+        Amazon Web Services (<a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">AWS</a>).
       </p>
     </sl-details>
 
@@ -125,8 +126,7 @@
       <img src="./img/lambda-typescript.png" alt="lambda server function in typescript">
       <p>
         See
-        <a
-          href="https://github.com/martinmphil/oak/blob/main/lib/handlers/workbook/scoreSubmission.ts">
+        <a href="https://github.com/martinmphil/oak/blob/main/lib/handlers/workbook/scoreSubmission.ts">
           Martin M.Phil.
         </a>
         GitHub repository for an example of TypeScript server functions running in Node.

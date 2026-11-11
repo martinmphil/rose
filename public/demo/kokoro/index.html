@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kokoro-guide.css">
+<title>Kokoro text-to-speech</title>
+
+<body>
+    <header>
+        <nav>
+            <a href="/index.html">GreenStem.uk</a>
+            <a href="../index.html">Demo page</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Text-To-Speech</h1>
+        <p>For private, open source, text-to-speech follow these guidelines. A user inputs text and this kokoro docker
+            app converts their text into audio via a compact, local, artificial neural network. The app verbalises the
+            user's text with realistic speech patterns and natural cadence in a British accent.</p>
+        <h2>Workflow summary</h2>
+        <p>Start the local text-to-speech service by opening a terminal and running
+            <code>sudo kokoro.sh</code>.
+            Then launch Chromium to browse
+            <code>http://localhost:8880/web</code>.
+        </p>
+        <h2>Kokoro text-to-speech</h2>
+        <p>Private, local, open source, realistic, text-to-speech (TTS)
+            🖹🡒🗣 </p>
+        <p>The Kokoro-FastAPI text-to-speech docker container will read text aloud to a user. A user inputs text and a
+            local
+            artificial neural network converts the user&#39;s text into audio with realistic speech patterns and natural
+            cadence. </p>
+        <h2>Set up</h2>
+        <p>If not already installed, install docker. </p>
+        <h3>Install Kokoro-FastAPI</h3>
+        <p>For standard CPU inference (that works reliably on any system) run </p>
+        <pre><code>sudo docker run -d \
+  --name kokoro-tts \
+  -p 8880:8880 \
+  -e DEFAULT_VOICE=bf_emma \
+  ghcr.io/remsky/kokoro-fastapi-cpu:latest
+</code></pre>
+        <h4>Test Kokoro-FastAPI</h4>
+        <p>Run
+            <code>sudo docker ps --filter name=kokoro-tts</code>
+            expect &quot;kokoro-tts&quot; status of &quot;Up...&quot;
+            where &quot;ps&quot; stands for &quot;process status&quot;.
+        </p>
+        <p>Run
+            <code>sudo docker logs kokoro-tts</code>
+            expect &quot;Uvicorn running on...&quot;
+        </p>
+        <p>In a web browser visit:-
+            <code>http://localhost:8880/web</code> for beta web interface, and
+            <code>http://localhost:8880/docs</code> for Open-API docs, and
+            <code>http://localhost:8880/v1/audio/voices</code>
+            expect JSON listing available voices including &quot;bf_emma&quot;
+            (where &quot;bf&quot; stands for British female).
+        </p>
+        <p>Text-to-speech is available via the beta web interface at
+            <code>http://127.0.0.1:8880/web</code> or
+            <code>http://0.0.0.0:8880/web</code> or
+            <code>http://localhost:8880/web</code>.
+        </p>
+        <h3>Script automation</h3>
+        <p>Create a script to launch docker daemon and run the text-to-speech container
+            <code>sudo nano /usr/local/bin/kokoro.sh</code>
+        </p>
+        <p>Add the following code to &quot;kokoro.sh&quot; </p>
+        <hr>
+        <pre><code>#!/bin/bash
+
+# Ensure the script is executed with root privileges
+if [ &quot;$EUID&quot; -ne 0 ]; then
+  echo &quot;Error: This script must be run with elevated privileges: sudo kokoro.sh&quot;
+  exit 1
+fi
+
+echo &quot;Starting Docker daemon...&quot;
+systemctl start docker
+
+echo &quot;Starting Kokoro TTS container...&quot;
+docker start kokoro-tts
+
+echo &quot;Kokoro TTS service is active and ready at http://localhost:8880/v1&quot;
+</code></pre>
+        <hr>
+        <p>In the nano text editor, save the file by pressing <code>Ctrl + O</code> then <code>Enter</code> then
+            <code>Ctrl + X</code>.
+        </p>
+        <p>Make <code>kokoro.sh</code> executable with
+            <code>sudo chmod +x /usr/local/bin/kokoro.sh</code>
+        </p>
+        <p>The text-to-speech container can now be started with <code>sudo kokoro.sh</code>. </p>
+        <h3>Stop container</h3>
+        <p>Powering off with the <code>kokoro</code> docker container still running is safe, however a manual stop can
+            be
+            triggered by running <code>sudo docker stop kokoro-tts</code>. </p>
+        <h3>Chromium</h3>
+        <p>In Chromium bookmark <code>http://localhost:8880/web</code>. </p>
+        <p>Chromium reduces delays by streaming initial audio while later speech synthesis continues. </p>
+        <h2>Fault finding</h2>
+        <p>Determine if docker daemon is active with
+            <code>systemctl is-active docker</code>
+        </p>
+        <p>Determine if docker container &quot;kokoro-tts&quot; is up and running with
+            <code>sudo docker ps --filter name=kokoro-tts</code>
+            expect &quot;kokoro-tts&quot; status of &quot;Up...&quot;
+            where <code>ps</code> stands for &quot;process status&quot;.
+        </p>
+        <h2>References</h2>
+        <p><a href="https://github.com/remsky/Kokoro-FastAPI">Kokoro-FastAPI</a> </p>
+        <p><a href="https://en.wikipedia.org/wiki/FastAPI">FastAPI</a> </p>
+        <p><a href="https://huggingface.co/hexgrad/Kokoro-82M">Kokoro-TTS-model</a> </p>
+
+    </main>
+    <footer>
+        <hr>
+        <nav>
+            <a href="/index.html">GreenStem.uk</a>
+            <a href="../index.html">Demo page</a>
+        </nav>
+    </footer>
+</body>
+
+</html>
