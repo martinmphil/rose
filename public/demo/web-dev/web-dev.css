@@ -1,0 +1,21 @@
+body {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+header a[href="/"] {
+  display: block;
+  text-align: right;
+}
+
+footer a[href="/"] {
+  padding-top: 1rem;
+  display: block;
+  text-align: right;
+}
+
+sl-details img {
+  width: 100%;
+  object-fit: contain;
+}
